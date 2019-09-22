@@ -1,0 +1,34 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "上传目录文件解决方案"
+			}
+		},
+		{
+			"path": "pages/index/androidUpload",
+			"style": {
+				"navigationBarTitleText": "Android上传目录文件"
+			}
+		},
+		{
+			"path": "pages/index/h5Upload",
+			"style": {
+				"navigationBarTitleText": "H5上传目录文件(不分系统)"
+			}
+		},
+		{
+			"path": "pages/index/fileUpload",
+			"style": {
+				"navigationBarTitleText": "H5文件上传"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}
