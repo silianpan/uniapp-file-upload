@@ -1,5 +1,5 @@
 # uniapp-file-upload
-uni-app目录文件上传，非只图片和视频
+uni-app系统目录文件上传（非只图片和视频）解决方案
 
 ## 背景
 公司领导提出这样的产品需求：需要上传目录文件，不只是图片和视频，而且同时要支持Android和IOS两大移动端。另外公司App的架构采用的是uni-app。
@@ -11,9 +11,7 @@ uni-app目录文件上传，非只图片和视频
 
 ## H5页面文件上传
 嵌入H5页面，需要采用web-view标签，如下：
-```html
 <web-view src="/hybrid/html/index.html" @message="handleMessage"></web-view>
-```
 
 注意：
 * h5页面必须在项目目录：/hybrid/html/下面，因为这样uni-app才不会进行编译
@@ -39,9 +37,7 @@ uni.navigateBack({
 
 注意：
 * 在h5页面中调用uni-app接口时，需要添加uni SDK
-```js
 <script type="text/javascript" src="https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.1.5.1.js"></script>
-```
 
 * 如果要让web-view的上一级页面，即表单页面接收数据，解决方法是：放到store中，表单页面从store中获取
 
@@ -58,20 +54,20 @@ github：https://github.com/silianpan/uniapp-file-upload
 
 * 两种方案
 
-![](https://user-gold-cdn.xitu.io/2019/9/22/16d57d8a11c6cda4?w=822&h=354&f=png&s=50458)
+![](http://silianpan.cn/wp-content/uploads/2019/09/fc333860ebc49b6db159e08a6e29fcb4.png)
 
 * 表单页
 
-![](https://user-gold-cdn.xitu.io/2019/9/22/16d57d8a19bc0a38?w=778&h=784&f=png&s=59290)
+![](http://silianpan.cn/wp-content/uploads/2019/09/7e35411c5ad85b57534e68ee68b77158.png)
 
 * 选择系统目录文件
-![](https://user-gold-cdn.xitu.io/2019/9/22/16d57d8a1ad90e8d?w=844&h=1400&f=png&s=69369)
+![](http://silianpan.cn/wp-content/uploads/2019/09/553e4abb905801436d341747342c0288.png)
 
 * 页面跳转url传递数据
 
-![](https://user-gold-cdn.xitu.io/2019/9/22/16d57d8a1af03458?w=790&h=850&f=png&s=94738)
+![](http://silianpan.cn/wp-content/uploads/2019/09/7f4c2261bc4b102262d855b0359ce3d4.png)
 
 ## 附：Android选择系统目录
-![](https://user-gold-cdn.xitu.io/2019/9/22/16d57d8a1af627cc?w=738&h=920&f=png&s=90023)
+![](http://silianpan.cn/wp-content/uploads/2019/09/ac3a52f7fd7c907c9058019354853d44.png)
 
 转载请注明：[溜爸 » uni-app系统目录文件上传（非只图片和视频）解决方案](http://silianpan.cn/index.php/2019/09/22/uniapp_file_upload/)
