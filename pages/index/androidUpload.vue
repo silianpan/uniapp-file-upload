@@ -203,3 +203,9 @@
 		}
 	}
 </script>
+
+<style>
+	.content {
+		margin:20rpx 60rpx;
+	}
+</style>

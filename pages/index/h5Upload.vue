@@ -10,8 +10,9 @@
 					<view class="title">描述</view>
 					<input class="uni-input" name="desc" placeholder="项目描述" />
 				</view>
+				<view style="color:red;text-align: center;margin-bottom: 10rpx;">点击文档上传</view>
 				<view class="uni-form-item uni-column">
-					<button type="primary" plain="true" @tap="clickFileUpload">文档上传</button>
+					<button type="warn" plain="true" @tap="clickFileUpload">文档上传</button>
 				</view>
 				<view class="uni-btn-v">
 					<button type="primary" form-type="submit">Submit</button>
