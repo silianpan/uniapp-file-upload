@@ -1,6 +1,12 @@
 # uniapp-file-upload
 uni-app系统目录文件上传（非只图片和视频）解决方案
 
+## 永中云服务
+
+新版本已经集成了永中云服务-云预览，[永中开发者平台](https://open.yozocloud.cn/)。
+
+参考技术文档[《跨平台文档在线预览解决方案（五）-水印、防复制、在线编辑等》]()
+
 ## 背景
 公司领导提出这样的产品需求：需要上传目录文件，不只是图片和视频，而且同时要支持Android和IOS两大移动端。另外公司App的架构采用的是uni-app。
 
@@ -54,20 +60,21 @@ github：https://github.com/silianpan/uniapp-file-upload
 
 * 两种方案
 
-![](http://silianpan.cn/wp-content/uploads/2019/09/fc333860ebc49b6db159e08a6e29fcb4.png)
+<img src="http://silianpan.cn/wp-content/uploads/2019/09/fc333860ebc49b6db159e08a6e29fcb4.png" width="320" />
 
 * 表单页
 
-![](http://silianpan.cn/wp-content/uploads/2019/09/7e35411c5ad85b57534e68ee68b77158.png)
+<img src="http://silianpan.cn/wp-content/uploads/2019/09/7e35411c5ad85b57534e68ee68b77158.png" width="320" />
 
 * 选择系统目录文件
-![](http://silianpan.cn/wp-content/uploads/2019/09/553e4abb905801436d341747342c0288.png)
+
+<img src="http://silianpan.cn/wp-content/uploads/2019/09/553e4abb905801436d341747342c0288.png" width="320" />
 
 * 页面跳转url传递数据
 
-![](http://silianpan.cn/wp-content/uploads/2019/09/7f4c2261bc4b102262d855b0359ce3d4.png)
+<img src="http://silianpan.cn/wp-content/uploads/2019/09/7f4c2261bc4b102262d855b0359ce3d4.png" width="320" />
 
 ## 附：Android选择系统目录
-![](http://silianpan.cn/wp-content/uploads/2019/09/ac3a52f7fd7c907c9058019354853d44.png)
+<img src="http://silianpan.cn/wp-content/uploads/2019/09/ac3a52f7fd7c907c9058019354853d44.png" width="320" />
 
 转载请注明：[溜爸 » uni-app系统目录文件上传（非只图片和视频）解决方案](http://silianpan.cn/index.php/2019/09/22/uniapp_file_upload/)
