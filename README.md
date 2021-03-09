@@ -55,7 +55,7 @@ uni.redirectTo({
 })
 ```
 
-## demo
+## Demo
 github：https://github.com/silianpan/uniapp-file-upload
 
 * 两种方案
