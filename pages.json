@@ -23,6 +23,12 @@
 			"style": {
 				"navigationBarTitleText": "H5文件上传"
 			}
+		},
+		{
+			"path": "pages/yzcloud/yz-preview",
+			"style": {
+				"navigationBarTitleText": "永中云预览"
+			}
 		}
 	],
 	"globalStyle": {

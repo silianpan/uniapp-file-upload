@@ -3,20 +3,32 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>H5附件上传</title>
+		<title>H5文档上传</title>
 	</head>
 
 	<body>
-		<h1>H5附件上传</h1>
-		<input type="file" id="myfile" name="myfile" style="display:none" onchange="changeAgentContent()" />
+		<h1>H5文档上传</h1>
+		<input type="file" id="myfile" name="file" style="display:none" onchange="changeAgentContent()" />
 		<input type="text" value="" disabled id="myfileAgent" />
 		<input type="button" onclick="document.getElementById('myfile').click()" value="浏览..." />
-		<!-- <input type="file" id="myfile" value="" name="myfile" multiple="multiple" /> -->
 		<button id="uploader">上传</button>
+		
+		<!-- <form enctype="multipart/form-data" method="post" id="myForm" name="file">
+			<input type="file" id="myFile" name="file">
+			<button id="uploader">上传</button>
+		</form> -->
 		<!-- uni 的 SDK -->
 		<script type="text/javascript" src="https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.1.5.1.js"></script>
 		<script type="text/javascript" src="js/h5uploader.js"></script>
+		<script type="text/javascript" src="https://cdn.bootcss.com/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+		<script type="text/javascript" src="js/signclient.js"></script>
 		<script type="text/javascript">
+			function getQueryString(key) {
+				var reg = new RegExp('(^|&)' + key + '=([^&]*)(&|$)')
+				var r = window.location.search.substr(1).match(reg)
+				if (r != null) return unescape(r[2])
+				return null
+			}
 			// 当前环境
 			uni.getEnv(function(res) {
 				console.log('当前环境：' + JSON.stringify(res));
@@ -24,9 +36,15 @@
 			function changeAgentContent(){
 			    document.getElementById("myfileAgent").value = document.getElementById("myfile").value;
 			}
-			var uploader = document.getElementById('uploader');
+			
+			var info = getQueryString('info');
+			info = JSON.parse(decodeURIComponent(info));
+			var appId = info.appId;
+			var appKey = info.appKey;
+			var dmc = info.dmc;
 			// 发送文件数据
 			function sendMessage(data) {
+				data.sign = generateSign(appKey, {"appId": [appId], "fileVersionId": [data.fileVersionId]});
 				uni.postMessage({
 					data: {
 						action: data
@@ -38,19 +56,28 @@
 				// })
 				// 关闭当前页面，跳转到应用内的某个页面
 				uni.redirectTo({
-					url: './h5Upload?fileData=' + data,
+					url: '/pages/yzcloud/yz-preview?fileData=' + encodeURIComponent(JSON.stringify(data)),
 				})
 				// 返回上一级页面,通过@message接收数据,并放到store中,以便提交时获取文件数据
 				// uni.navigateBack({
 				//     delta: 1
 				// });
 			}
+			var uploader = document.getElementById('uploader');
 			uploader.addEventListener("click", function(e) {
-				// 上传完成,发送文件数据到应用中
-				sendMessage('fileData')
+				var sign = generateSign(appKey, {"appId": [appId]});
+				
+				// 以下是XMLHttpRequest上传文件的简单post请求
+				// var form = new FormData();
+				// form.append("file", document.getElementById('myfile').files[0]);
+				// var xhrForm = new XMLHttpRequest();
+				// xhrForm.open("POST", '/apiYzPreviewDmc/api/file/upload?appId=' + appId + '&sign=' + sign, true);
+				// xhrForm.send(form);
+				
+				// 以下是封装XMLHttpRequest，包含成功或失败回调函数
 				H5Uploader.upload({
 					// 上传url
-					action: 'upload',
+					action: dmc + '/api/file/upload?appId=' + appId + '&sign=' + sign,
 					id: 'myfile',
 					size: {
 						max: 50000, // 5000kb 
@@ -61,7 +88,7 @@
 						}
 					}, // MB
 					type: {
-						name: 'csv;png;jpg;jpeg',
+						name: 'csv;doc;docx;xls;xltx;ppt;pptx;jpeg;jpg;png;gif;bmp;tif;rar;zip;uof;uot;uos;uop;pdf;ofd;',
 						valide: function(e) {
 							if (e) {
 								alert("The type of " + e.name + " is not supported!");
@@ -75,13 +102,18 @@
 						document.body.appendChild(p);
 					},
 					success: function(data) {
-						alert(data);
-						if (data && data == 200) {
-							document.getElementById('loading').innerHTML = "The file upload successfully!";
-							alert("The file upload successfully.");
-						}
+						// alert(data);
+						// if (data && data == 200) {
+						// 	document.getElementById('loading').innerHTML = "The file upload successfully!";
+						// 	alert("The file upload successfully.");
+						// }
+						
+						// 上传完成，发送结果到应用中
+						var tmpJson = JSON.parse(data)
+						sendMessage(tmpJson.data);
 					},
 					fail: function(data) {
+						alert("The file upload failed.");
 					}
 				});
 			}, false);

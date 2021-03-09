@@ -76,5 +76,34 @@
     },
     "mp-toutiao" : {
         "usingComponents" : true
-    }
+    },
+	"h5" : {
+	    "devServer" : {
+	        "port" : 9091,
+	        "disableHostCheck" : true,
+	        "proxy" : {
+				"/apiYzPreviewDmc" : {
+				    "target" : "http://dmc.yozocloud.cn",
+				    "changeOrigin" : true,
+				    "secure" : false,
+				    "pathRewrite" : {
+				        "^/apiYzPreviewDmc" : ""
+				    }
+				},
+				"/apiYzPreviewEic" : {
+				    "target" : "http://eic.yozocloud.cn",
+				    "changeOrigin" : true,
+				    "secure" : false,
+				    "pathRewrite" : {
+				        "^/apiYzPreviewEic" : ""
+				    }
+				}
+	        }
+	    },
+	    "title" : "uniapp-file-upload",
+	    "router" : {
+	        "mode" : "hash",
+	        "base" : "/"
+	    }
+	}
 }
